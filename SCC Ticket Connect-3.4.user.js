@@ -6,8 +6,8 @@
 // @description  Displays RME ticket links on disabled stations in SCC by reading Slack channels
 // @match        https://staffingcommandcenter-na.aka.amazon.com/*/approved/*
 // @match        https://staffingcommandcenter-na.aka.amazon.com/*/plan/*
-// @updateURL    https://github.com/ntetesamuela/scc-ticket-connect/raw/refs/heads/main/SCC%20Ticket%20Connect-3.2.user.js
-// @downloadURL  https://github.com/ntetesamuela/scc-ticket-connect/raw/refs/heads/main/SCC%20Ticket%20Connect-3.2.user.js
+// @updateURL    https://github.com/ntetesamuela/scc-ticket-connect/raw/refs/heads/main/SCC%20Ticket%20Connect-3.4.user.js
+// @downloadURL  https://github.com/ntetesamuela/scc-ticket-connect/raw/refs/heads/main/SCC%20Ticket%20Connect-3.4.user.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
