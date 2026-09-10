@@ -2,10 +2,12 @@
 // ==UserScript==
 // @name         SCC Ticket Connect
 // @namespace    http://tampermonkey.net/
-// @version      3.2
+// @version      3.3
 // @description  Displays RME ticket links on disabled stations in SCC by reading Slack channels
 // @match        https://staffingcommandcenter-na.aka.amazon.com/*/approved/*
 // @match        https://staffingcommandcenter-na.aka.amazon.com/*/plan/*
+// @updateURL    https://github.com/ntetesamuela/scc-ticket-connect/raw/refs/heads/main/SCC%20Ticket%20Connect-3.2.user.js
+// @downloadURL  https://github.com/ntetesamuela/scc-ticket-connect/raw/refs/heads/main/SCC%20Ticket%20Connect-3.2.user.js
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -576,7 +578,7 @@
                 <h3>${title}</h3>
                 <label>Ticket ID or URL</label>
                 <input type="text" class="scc-input-ticket"
-                    placeholder="e.g. [US_PASSPORT_NUMBER] or https://t.corp.amazon.com/[US_PASSPORT_NUMBER]"
+                    placeholder="e.g. V2354963373 or https://t.corp.amazon.com/V2354963373"
                     value="${existingTicket ? (existingTicket.url || existingTicket.id || '') : ''}" />
                 <label>Description (optional)</label>
                 <input type="text" class="scc-input-desc"
@@ -635,7 +637,7 @@
                 ticketId = idMatch[1];
                 ticketUrl = `https://t.corp.amazon.com/${ticketId}`;
             } else {
-                errorEl.textContent = 'Enter a valid ticket ID (e.g. [US_PASSPORT_NUMBER]) or full URL.';
+                errorEl.textContent = 'Enter a valid ticket ID (e.g. V2354963373) or full URL.';
                 errorEl.style.display = 'block';
                 successEl.style.display = 'none';
                 return;
@@ -858,7 +860,7 @@
     }
 
     // ─── INIT ─────────────────────────────────────────────────────
-    console.log('[SCC Ticket Connect] Starting v3.2...');
+    console.log('[SCC Ticket Connect] Starting v3.3...');
     fetchAllChannels();
     startObserver();
 
