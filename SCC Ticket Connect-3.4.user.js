@@ -24,7 +24,7 @@
     const POLL_INTERVAL_MS = 60000;
     const MAX_MESSAGES = 500;
     const HISTORY_MAX_MESSAGES = 999;
-    const TABLE_SELECTOR = 'table.rsp-table.table-holder.table-striped[data-cy="rsp-table"]';
+    const TABLE_SELECTOR = 'table[data-cy="rsp-table"]';
 
     const RESOLVED_KEYWORDS = [
         'resolved', 'closed', 'completed', 'fixed',
@@ -860,7 +860,7 @@
     }
 
     // ─── INIT ─────────────────────────────────────────────────────
-    console.log('[SCC Ticket Connect] Starting v3.3...');
+    console.log('[SCC Ticket Connect] Starting v3.4...');
     fetchAllChannels();
     startObserver();
 
