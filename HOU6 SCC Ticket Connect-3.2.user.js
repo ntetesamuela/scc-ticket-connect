@@ -1,6 +1,6 @@
 
 // ==UserScript==
-// @name         SCC Ticket Connect
+// @name         HOU6 SCC Ticket Connect
 // @namespace    http://tampermonkey.net/
 // @version      3.5
 // @description  Displays RME ticket links on disabled stations in SCC by reading Slack channels
