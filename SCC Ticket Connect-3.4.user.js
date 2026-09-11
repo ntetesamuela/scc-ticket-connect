@@ -24,7 +24,7 @@
     const POLL_INTERVAL_MS = 60000;
     const MAX_MESSAGES = 500;
     const HISTORY_MAX_MESSAGES = 999;
-    const TABLE_SELECTOR = 'table[data-cy="rsp-table"]';
+    const TABLE_SELECTOR = 'table.rsp-table.table-holder.table-striped[data-cy="rsp-table"]';
 
     const RESOLVED_KEYWORDS = [
         'resolved', 'closed', 'completed', 'fixed',
@@ -578,7 +578,7 @@
                 <h3>${title}</h3>
                 <label>Ticket ID or URL</label>
                 <input type="text" class="scc-input-ticket"
-                    placeholder="e.g. V2354963373 or https://t.corp.amazon.com/V2354963373"
+                    placeholder="e.g. V2489284895 or https://t.corp.amazon.com/V2489284895"
                     value="${existingTicket ? (existingTicket.url || existingTicket.id || '') : ''}" />
                 <label>Description (optional)</label>
                 <input type="text" class="scc-input-desc"
@@ -637,7 +637,7 @@
                 ticketId = idMatch[1];
                 ticketUrl = `https://t.corp.amazon.com/${ticketId}`;
             } else {
-                errorEl.textContent = 'Enter a valid ticket ID (e.g. V2354963373) or full URL.';
+                errorEl.textContent = 'Enter a valid ticket ID e.g. V2489284895 or full URL.';
                 errorEl.style.display = 'block';
                 successEl.style.display = 'none';
                 return;
