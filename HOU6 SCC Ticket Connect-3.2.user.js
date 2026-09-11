@@ -31,22 +31,53 @@
         'cancelled', 'canceled', 'duplicate'
     ];
 
-        // ─── FIRST-RUN SETUP ──────────────────────────────────────────
+    // ─── FIRST-RUN SETUP ──────────────────────────────────────────
     if (!SLACK_BOT_TOKEN) {
-        const token = prompt(
-            'SCC Ticket Connect — First-Time Setup
+        const setupOverlay = document.createElement('div');
+        setupOverlay.className = 'scc-modal-overlay';
+        setupOverlay.innerHTML = `
+            <div class="scc-modal">
+                <h3>🎫 SCC Ticket Connect — Setup</h3>
+                <p style="font-size:13px;color:#333;margin:0 0 12px 0;">
+                    Welcome! To get started, you need the Slack Bot Token.
+                </p>
+                <p style="font-size:13px;color:#333;margin:0 0 12px 0;">
+                    <strong>Step 1:</strong> Join the private channel 👉
+                    <a href="https://amazon.enterprise.slack.com/archives/C0BV2EJAE91" target="_blank" style="color:#0073bb;">#hou6-disabled-stations</a>
+                </p>
+                <p style="font-size:13px;color:#333;margin:0 0 12px 0;">
+                    <strong>Step 2:</strong> Copy the Bot Token from the <strong>pinned message</strong> in that channel.
+                </p>
+                <p style="font-size:13px;color:#333;margin:0 0 12px 0;">
+                    <strong>Step 3:</strong> Paste it below.
+                </p>
+                <label>Bot Token</label>
+                <input type="text" class="scc-input-token" placeholder="xoxb-..." />
+                <div class="scc-error" style="display:none;"></div>
+                <div class="scc-modal-buttons">
+                    <button class="scc-btn-save">Save & Start</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(setupOverlay);
 
-' +
-            'Paste your Slack Bot Token (starts with xoxb-).
-' +
-            'You only need to do this once.'
-        );
-        if (token && token.startsWith('xoxb-')) {
+        const tokenInput = setupOverlay.querySelector('.scc-input-token');
+        const errorEl = setupOverlay.querySelector('.scc-error');
+        const saveBtn = setupOverlay.querySelector('.scc-btn-save');
+
+        saveBtn.addEventListener('click', () => {
+            const token = tokenInput.value.trim();
+            if (!token.startsWith('xoxb-')) {
+                errorEl.textContent = 'Invalid token. It should start with xoxb-';
+                errorEl.style.display = 'block';
+                return;
+            }
             GM_setValue('slack_bot_token', token);
+            setupOverlay.remove();
             location.reload();
-        } else {
-            alert('Invalid token. Reload the page to try again.');
-        }
+        });
+
+        tokenInput.focus();
         return;
     }
 
