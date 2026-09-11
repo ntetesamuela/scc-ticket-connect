@@ -18,7 +18,7 @@
     'use strict';
 
     // ─── CONFIG ───────────────────────────────────────────────────
-    const SLACK_BOT_TOKEN = 'xoxb-1226494846485-11996585843505-kyE1Dgie4L58QfHGRbokxfSd';
+    const SLACK_BOT_TOKEN = 'xoxb-1226494846485-11996585843505-lXvCQ78dlo8hmgcjV92pYm5C';
     const RME_CHANNEL_ID = 'C0B98TLA6KA';
     const DISABLED_CHANNEL_ID = 'C0BV2EJAE91';
     const POLL_INTERVAL_MS = 60000;
