@@ -18,7 +18,7 @@
     'use strict';
 
     // ─── CONFIG ───────────────────────────────────────────────────
-    const SLACK_BOT_TOKEN = 'xoxb-1226494846485-11996585843505-lXvCQ78dlo8hmgcjV92pYm5C';
+    const SLACK_BOT_TOKEN = GM_getValue('slack_bot_token', '');
     const RME_CHANNEL_ID = 'C0B98TLA6KA';
     const DISABLED_CHANNEL_ID = 'C0BV2EJAE91';
     const POLL_INTERVAL_MS = 60000;
@@ -30,6 +30,25 @@
         'resolved', 'closed', 'completed', 'fixed',
         'cancelled', 'canceled', 'duplicate'
     ];
+
+        // ─── FIRST-RUN SETUP ──────────────────────────────────────────
+    if (!SLACK_BOT_TOKEN) {
+        const token = prompt(
+            'SCC Ticket Connect — First-Time Setup
+
+' +
+            'Paste your Slack Bot Token (starts with xoxb-).
+' +
+            'You only need to do this once.'
+        );
+        if (token && token.startsWith('xoxb-')) {
+            GM_setValue('slack_bot_token', token);
+            location.reload();
+        } else {
+            alert('Invalid token. Reload the page to try again.');
+        }
+        return;
+    }
 
     // ─── STATE ────────────────────────────────────────────────────
     let ticketMap = {};
